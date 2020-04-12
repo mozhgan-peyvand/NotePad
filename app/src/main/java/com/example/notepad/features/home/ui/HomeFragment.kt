@@ -1,6 +1,8 @@
 package com.example.notepad.features.home.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.notepad.R
 import com.example.notepad.core.ui.safeNavigate
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlin.math.log
 
 class HomeFragment : Fragment() {
     lateinit var navController: NavController
@@ -24,23 +27,29 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    @SuppressLint("LogNotTimber")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         btn_addNote_home.setOnClickListener {
-//            safeNavigate(findNavController(),HomeFragmentDirections.actionHomeFragmentToNoteFragment())
+//            Log.d("kharrrrrrrrr", "im okey")
+////            safeNavigate(findNavController(),HomeFragmentDirections.actionHomeFragmentToNoteFragment())
 //            safeNavigate(findNavController(),R.id.noteFragment,R.id.homeFragment)
-            findNavController().navigate(R.id.action_homeFragment_to_noteFragment )
+//            findNavController().navigate(R.id.action_homeFragment_to_noteFragment )
         }
 
     }
 
-    fun  initValue(){
-
-    }
-    fun initView(){
+    fun initValue() {
 
     }
 
+    fun initView() {
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+    }
 
 }
