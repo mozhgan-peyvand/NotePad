@@ -4,7 +4,7 @@ package com.example.notepad.core.ui
 //import android.graphics.Rect
 //import android.os.Build
 //import android.os.Bundle
-//import android.util.TypedValue
+//import android.com.example.notepad.core.util.TypedValue
 //import android.view.*
 //import android.view.View.*
 //import androidx.core.content.ContextCompat
@@ -15,9 +15,9 @@ package com.example.notepad.core.ui
 //import dagger.android.support.DaggerFragment
 //import ir.part.app.merat.MeratApp
 //import ir.part.app.merat.R
-//import ir.part.app.merat.core.util.DateUtil
-//import ir.part.app.merat.core.util.ExceptionHelper
-//import ir.part.app.merat.core.util.analytics.MatomoAnalyticsHelper
+//import ir.part.app.merat.core.com.example.notepad.core.util.DateUtil
+//import ir.part.app.merat.core.com.example.notepad.core.util.ExceptionHelper
+//import ir.part.app.merat.core.com.example.notepad.core.util.analytics.MatomoAnalyticsHelper
 //import ir.part.app.merat.features.home.ui.HomeActivity
 //import ir.part.app.merat.features.user.ui.UserLoginDialogFragment
 //import kotlinx.android.synthetic.main.toolbar_personal_info.view.*
