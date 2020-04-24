@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -29,6 +31,7 @@ class HomeFragment : Fragment() {
 
     var adapter by autoCleared<NoteListAdapter>()
 
+    lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +44,7 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        homeViewModel = ViewModelProviders.of(requireActivity())[HomeViewModel::class.java]
 
         initView()
 
@@ -52,12 +56,39 @@ class HomeFragment : Fragment() {
 
     }
 
+    @SuppressLint("FragmentLiveDataObserve")
     fun initView() {
-        adapter = NoteListAdapter(context)
-        Toast.makeText(context,"im adapter",Toast.LENGTH_LONG).show()
-        binding.noteList.adapter = adapter
-        adapter.submitList(mutableListOf(NoteItemInfoView("mozhgan"),NoteItemInfoView("milad")))
 
+        /**
+         * init adapter and get it to bind
+        * */
+
+        Toast.makeText(context, "im adapter", Toast.LENGTH_LONG).show()
+        adapter = NoteListAdapter(context)
+        binding.noteList.adapter = adapter
+
+        /**
+         * first init adapter for test or other things
+         * */
+
+//        adapter.submitList(mutableListOf(NoteItemInfoView("mozhgan"),NoteItemInfoView("milad")))
+
+        /**
+         * init adapter after change
+        * */
+
+        homeViewModel.noteListHome.observe(viewLifecycleOwner, Observer {
+            val uiModel = it
+            adapter.submitList(uiModel.toMutableList())
+        })
+
+        /**
+         * add button
+        * */
+
+        btn_addNote_home.setOnClickListener {
+            homeViewModel.addNoteItem(et_titleNote_home.text.toString())
+        }
     }
 
 }

@@ -3,16 +3,25 @@ package com.example.notepad.features.home.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import androidx.navigation.findNavController
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableList
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import com.example.notepad.R
 import com.example.notepad.core.ui.safeNavigate
 import com.example.notepad.core.util.binding.DataBoundListAdapter
 import com.example.notepad.databinding.ItemNoteListBinding
+
+
+/**
+* use listAdapter that its deferent with recycler with becase it
+ * dont ust of notifyDataSetChanged() after adapter and it
+ * use of are itemTheSame and areContentTheSame for it
+* */
 
 class NoteListAdapter (private val context: Context?):
     DataBoundListAdapter<NoteItemInfoView, ItemNoteListBinding>(
@@ -49,15 +58,20 @@ class NoteListAdapter (private val context: Context?):
 
             noteItem = item
             root.setOnClickListener {
-                noteItem.let {
-                    Log.d("you click on me","yes im work")
-                }
+//                noteItem.let {
+//                    Log.d("you click on me","yes im work")
+//                }
             }
+
 
         }
     }
 
     private var noteItemInfoView: MutableList<NoteItemInfoView>? = null
+
+    /**
+     * can dont override it
+    * */
 
     override fun submitList(list: MutableList<NoteItemInfoView>?) {
         noteItemInfoView = list
