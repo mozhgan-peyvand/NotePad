@@ -89,6 +89,7 @@ class HomeFragment : Fragment() {
         btn_addNote_home.setOnClickListener {
             homeViewModel.addNoteItem(et_titleNote_home.text.toString())
         }
+
     }
 
 }
