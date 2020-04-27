@@ -21,6 +21,7 @@ import com.example.notepad.databinding.ItemNoteListBinding
 * use listAdapter that its deferent with recycler with becase it
  * dont ust of notifyDataSetChanged() after adapter and it
  * use of are itemTheSame and areContentTheSame for it
+ * best source to displain recycler view in world! https://www.testchamber.nl/test-automation/testing-recyclerviews-with-espresso/
 * */
 
 class NoteListAdapter (private val context: Context?):
@@ -52,7 +53,6 @@ class NoteListAdapter (private val context: Context?):
         )
     }
 
-    @SuppressLint("ShowToast", "LogNotTimber")
     override fun bind(binding: ItemNoteListBinding, item: NoteItemInfoView, position: Int) {
         binding.apply {
 
@@ -63,7 +63,9 @@ class NoteListAdapter (private val context: Context?):
 //                }
             }
 
-
+            clNoteItem.setOnClickListener {
+                it.findNavController().navigate(R.id.action_homeFragment_to_noteFragment)
+            }
         }
     }
 
